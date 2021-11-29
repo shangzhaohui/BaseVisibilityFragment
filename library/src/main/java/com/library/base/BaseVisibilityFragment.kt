@@ -118,7 +118,7 @@ abstract class BaseVisibilityFragment : Fragment(), View.OnAttachStateChangeList
         info("checkVisibility expected $expected visible $visible")
         if (expected == visible) return
         //  这里主要由四个值来判断；
-        //  parentVisible表示父Fragment的可见性，
+        //  parentFragmentVisible 表示父Fragment的可见性，
         val parentFragmentVisible =
             if (localParentFragment == null) true
             else localParentFragment?.isFragmentVisible() ?: false
@@ -126,7 +126,7 @@ abstract class BaseVisibilityFragment : Fragment(), View.OnAttachStateChangeList
         val hintVisible = !isHidden
 //        兼容BEHAVIOR_SET_USER_VISIBLE_HINT情况
         val userVisible = userVisibleHint
-//        onResumeVisible：自身是resume
+//        onResumePauseVisible：自身是resume
         val visible = parentFragmentVisible && hintVisible && onResumePauseVisible && userVisible
         info(
             String.format(
